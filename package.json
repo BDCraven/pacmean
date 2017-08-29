@@ -1,0 +1,23 @@
+{
+  "name": "pacmean",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "grunt jasmine"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/paulmillen/pacmean.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/paulmillen/pacmean/issues"
+  },
+  "homepage": "https://github.com/paulmillen/pacmean#readme",
+  "devDependencies": {
+    "grunt": "^1.0.1",
+    "grunt-contrib-jasmine": "^1.1.0"
+  }
+}
