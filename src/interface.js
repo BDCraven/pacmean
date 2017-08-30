@@ -24,8 +24,8 @@ window.onload=function() {
     this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
     context.fillStyle='black';
     context.fillRect(0,0,canvas.width,canvas.height);
-    world.display();
-    pacMean = new PacMean(pacMeanX, pacMeanY);
+    world.draw();
+    pacMean.draw();
   }
 
   function updateGameArea() {
@@ -33,10 +33,6 @@ window.onload=function() {
      if (key && key == 38) {pacMean.goUp();}
      if (key && key == 39) {pacMean.goRight();}
      if (key && key == 40) {pacMean.goDown();}
-
-     pacMean.draw();
-     pacMeanX = pacMean.x;
-     pacMeanY = pacMean.y;
      clear();
    }
 };
