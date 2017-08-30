@@ -1,5 +1,18 @@
 'use strict';
 
+var context = {
+  fillRect: function () {
+  },
+  clearRect: function () {
+  },
+};
+
+var canvas = {
+  width: 480,
+  height: 480,
+};
+
+
 describe("GameController", function () {
   var gameController;
 
