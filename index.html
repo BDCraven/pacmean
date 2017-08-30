@@ -1,12 +1,3 @@
 <canvas id='world' width='600' height='600'></canvas>
 <script src="src/pacMean.js" charset="utf-8"></script>
-<script>
-  window.onload=function() {
-    canvas = document.getElementById('world');
-    context = canvas.getContext('2d');
-
-    context.fillStyle='black';
-    context.fillRect(0,0,canvas.width,canvas.height);
-    pacMean = new PacMean(300, 300);
-  }
-</script>
+<script src="src/interface.js" charset="utf-8"></script>
