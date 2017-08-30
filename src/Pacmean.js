@@ -1,5 +1,5 @@
 function PacMean(x, y) {
-  this.width = this.height = 30;
+  this.width = this.height = 20;
   this.SPEED = 1;
   this.x = x;
   this.y = y;

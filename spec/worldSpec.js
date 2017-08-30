@@ -1,11 +1,10 @@
 'use strict';
 
 describe ('World', function() {
-  var world, grid, wall;
+  var world, wall;
 
   beforeEach(function() {
     world = new World;
-    grid = world.getGrid();
     wall = world.getWall();
   });
 

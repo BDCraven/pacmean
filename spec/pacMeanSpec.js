@@ -13,8 +13,8 @@ describe("PacMean", function () {
   });
 
   it("is created with set dimensions", function () {
-    expect(pacMean.width).toEqual(30)
-    expect(pacMean.height).toEqual(30)
+    expect(pacMean.width).toEqual(20)
+    expect(pacMean.height).toEqual(20)
   });
 
   it("starts at set co-ordinates", function () {
