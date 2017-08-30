@@ -12,17 +12,41 @@ PacMean.prototype.draw = function () {
 };
 
 PacMean.prototype.goRight = function () {
-  this.x += this.SPEED;
+  if (this.checkHorizontalLocation()) {
+    this.x += this.SPEED;
+  }else{
+    this.x = 1;
+  }
 };
 
 PacMean.prototype.goLeft = function () {
-  this.x -= this.SPEED;
+  if (this.checkHorizontalLocation()) {
+    this.x -= this.SPEED;
+  }else{
+    this.x = canvas.width - 1;
+  }
 };
 
 PacMean.prototype.goUp = function () {
-  this.y -= this.SPEED;
+  if (this.checkVerticalLocation()) {
+    this.y -= this.SPEED;
+  }else{
+    this.y = canvas.height - 1;
+  }
 };
 
 PacMean.prototype.goDown = function () {
-  this.y += this.SPEED;
+  if (this.checkVerticalLocation()) {
+    this.y += this.SPEED;
+  }else{
+    this.y = 1;
+  }
+};
+
+PacMean.prototype.checkHorizontalLocation = function () {
+  return this.x > 0 && this.x < canvas.width;
+};
+
+PacMean.prototype.checkVerticalLocation = function () {
+  return this.y > 0 && this.y < canvas.height;
 };

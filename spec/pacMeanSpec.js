@@ -4,6 +4,11 @@ var context = {
   }
 }
 
+var canvas = {
+  width: 480,
+  height: 480,
+}
+
 describe("PacMean", function () {
   var pacMean;
 
@@ -49,4 +54,36 @@ describe("PacMean", function () {
     pacMean.goDown();
     expect(pacMean.y).toEqual(121);
   });
+
+  it("resets its location on the board when it passes the right board edge", function () {
+    pacMean.x = 480
+    pacMean.goRight();
+    expect(pacMean.x).toEqual(1);
+  })
+
+  it("resets its location on the board when it passes the left board edge", function () {
+    pacMean.x = 0
+    pacMean.goLeft();
+    expect(pacMean.x).toEqual(479);
+  })
+
+  it("can check if it is within the board's horizontal boundaries", function() {
+    expect(pacMean.checkHorizontalLocation()).toEqual(true);
+  })
+
+  it("can check if it is within the board's vertical boundaries", function() {
+    expect(pacMean.checkVerticalLocation()).toEqual(true);
+  })
+
+  it("resets its location on the board when it passes the bottom board edge", function () {
+    pacMean.y = 480
+    pacMean.goDown();
+    expect(pacMean.y).toEqual(1);
+  })
+
+  it("resets its location on the board when it passes the top board edge", function () {
+    pacMean.y = 0
+    pacMean.goUp();
+    expect(pacMean.y).toEqual(479);
+  })
 });
