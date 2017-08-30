@@ -1,8 +1,16 @@
 'use strict';
 
-var Wall = function (width, height, colour) {
-  var self = this;
-  self._width = width; //Add an || here in case argument hasn't been passed
-  self._height = height;
-  self._colour = colour;
-};
+(function(exports){
+  function Wall(width, height, colour) {
+    this._width = width;
+    this._height = height;
+    this._colour = colour || '#00F';
+  };
+
+  Wall.prototype.display = function(x,y){
+    context.fillStyle = this._colour;
+    context.fillRect(x,y,this._width,this._height);
+  };
+
+  exports.Wall = Wall;
+})(this);
