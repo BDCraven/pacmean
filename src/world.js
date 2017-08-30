@@ -47,7 +47,7 @@
           this._wall.displayWall(y*this._ELEMENT_WIDTH,x*this._ELEMENT_HEIGHT);
       }
     }
-  };
+  };  
 
   exports.World = World;
 })(this);
