@@ -7,6 +7,20 @@
   <link rel="shortcut icon" type="image/png" href="lib/jasmine-2.8.0/jasmine_favicon.png">
   <link rel="stylesheet" href="lib/jasmine-2.8.0/jasmine.css">
 
+  <script type="text/javascript">
+    var context = {
+      fillRect: function () {
+      },
+      clearRect: function () {
+      },
+    }
+
+    var canvas = {
+      width: 480,
+      height: 480,
+    }
+  </script>
+
   <script src="lib/jasmine-2.8.0/jasmine.js"></script>
   <script src="lib/jasmine-2.8.0/jasmine-html.js"></script>
   <script src="lib/jasmine-2.8.0/boot.js"></script>
@@ -15,13 +29,14 @@
   <script src="src/world.js"></script>
   <script src="src/wall.js"></script>
   <script src="src/pacMean.js"></script>
+  <script src="src/gameController.js"></script>
 
 
   <!-- include spec files here... -->
   <script src="spec/worldSpec.js"></script>
   <script src="spec/wallSpec.js"></script>
   <script src="spec/pacMeanSpec.js"></script>
-
+  <script src="spec/gameControllerSpec.js"></script>
 </head>
 
 <body>
