@@ -17,8 +17,9 @@ describe ('World', function() {
 
   describe('display', function() {
     it('displays the wall when the grid has a wall element', function() {
+      spyOn(wall, 'displayWall')
       world.display();
-      expect(wall.callCount).toEqual(8);
+      expect(wall.displayWall.calls.count()).toEqual(44);
     });
   });
 

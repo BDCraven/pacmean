@@ -7,7 +7,7 @@
     this._colour = colour || '#00F';
   };
 
-  Wall.prototype.display = function(x,y){
+  Wall.prototype.displayWall = function(x,y){
     context.fillStyle = this._colour;
     context.fillRect(x,y,this._width,this._height);
   };

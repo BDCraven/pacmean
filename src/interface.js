@@ -1,14 +1,16 @@
-var canvas = document.getElementById('world');
-var context = canvas.getContext('2d');
+canvas = document.getElementById('global-canvas');
+context = canvas.getContext('2d');
 
 window.onload=function() {
   var key;
   var pacMean;
   var pacMeanX = canvas.width/2;
   var pacMeanY = canvas.height/2;
+  var world = new World;
 
   context.fillStyle='black';
   context.fillRect(0,0,canvas.width,canvas.height);
+
   pacMean = new PacMean(pacMeanX, pacMeanY);
   window.addEventListener('keydown', function (e) {
     key = e.keyCode;
@@ -22,6 +24,7 @@ window.onload=function() {
     this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
     context.fillStyle='black';
     context.fillRect(0,0,canvas.width,canvas.height);
+    world.display();
     pacMean = new PacMean(pacMeanX, pacMeanY);
   }
 
@@ -30,6 +33,7 @@ window.onload=function() {
      if (key && key == 38) {pacMean.goUp();}
      if (key && key == 39) {pacMean.goRight();}
      if (key && key == 40) {pacMean.goDown();}
+
      pacMean.draw();
      pacMeanX = pacMean.x;
      pacMeanY = pacMean.y;
