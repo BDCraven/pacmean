@@ -15,9 +15,6 @@ window.onload=function() {
   window.addEventListener('keydown', function (e) {
     key = e.keyCode;
   });
-  window.addEventListener('keyup', function (e) {
-    key = false;
-  });
   setInterval(updateGameArea, 10);
 
   function clear() {
