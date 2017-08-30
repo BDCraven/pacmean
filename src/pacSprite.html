@@ -1,0 +1,70 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Playing</title>
+
+		<script>
+			function myfunc(e) {
+				e = e || window.event;
+				console.log(e);
+				nudge();
+			}
+		</script>
+	</head>
+
+	<body onload="renderSprite()">
+		<canvas id="pacMeanAnimation" onkeydown="myfunc()" style="border: solid 5px #8A2BE2;">
+		Your browser does not support the HTML5 canvas tag.
+		</canvas>
+
+	<script>
+		var pacMeanImg = new Image();
+		pacMeanImg.src = "images/pacmean-animation.png";
+
+		function sprite (options) {
+			var that = {};
+
+			that.context = options.context;
+			that.width = options.width;
+			that.height = options.height;
+			that.image = options.image;
+			that.x = 0;
+			that.render = function() {
+				//Draw the animation
+				that.context.drawImage(
+					that.image,
+					0,
+					0,
+					that.width,
+					that.height,
+					that.x,
+					0,
+					that.width,
+					that.height);
+			};
+			return that;
+		}
+
+		var canvas = document.getElementById("pacMeanAnimation")
+	  canvas.width = 129;
+	  canvas.height = 130;
+
+		var pacMean = sprite({
+			context: canvas.getContext("2d"),
+			width: 129,
+			height: 130,
+			image: pacMeanImg
+		})
+
+
+	function renderSprite() {
+		pacMean.render();
+	}
+
+	function nudge() {
+		pacMean.x += 1;
+	}
+	</script>
+	</body>
+</html>
