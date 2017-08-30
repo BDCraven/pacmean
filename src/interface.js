@@ -4,8 +4,8 @@ context = canvas.getContext('2d');
 window.onload=function() {
   var key;
   var pacMean;
-  var pacMeanX = canvas.width/2;
-  var pacMeanY = canvas.height/2;
+  var pacMeanX = 9 * 25;
+  var pacMeanY = 16 * 25;
   var world = new World;
 
   context.fillStyle='black';

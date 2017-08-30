@@ -1,5 +1,5 @@
 function PacMean(x, y) {
-  this.width = this.height = 20;
+  this.width = this.height = 25;
   this.SPEED = 1;
   this.x = x;
   this.y = y;
@@ -8,7 +8,7 @@ function PacMean(x, y) {
 
 PacMean.prototype.draw = function () {
   context.fillStyle = "yellow";
-  context.fillRect(this.x-this.width/2, this.y-this.height/2, this.width, this.height);
+  context.fillRect(this.x, this.y, this.width, this.height);
 };
 
 PacMean.prototype.goRight = function () {
