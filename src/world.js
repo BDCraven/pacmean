@@ -41,13 +41,23 @@
   };
 
   World.prototype.display = function() {
-    for (var x = 0; x < this._MAX_ELEMENTS_X; x++ ) {
-      for (var y = 0; y < this._MAX_ELEMENTS_Y; y++) {
-        if(this._grid[x][y] === 1)
-          this._wall.displayWall(y*this._ELEMENT_WIDTH,x*this._ELEMENT_HEIGHT);
+    for (var i = 0; i < this._MAX_ELEMENTS_X; i++ ) {
+      for (var j = 0; j < this._MAX_ELEMENTS_Y; j++) {
+        if(this._grid[i][j] === 1)
+          this._wall.displayWall(j*this._ELEMENT_WIDTH,i*this._ELEMENT_HEIGHT);
       }
     }
-  };  
+  };
+
+  World.prototype.isWall = function(pacmeanX,pacmeanY) {
+        var j = pacmeanX / this._ELEMENT_WIDTH;
+        var i = pacmeanY / this._ELEMENT_HEIGHT;
+        if(this._grid[i][j] === 1) {
+          return true;
+      } else {
+          return false;
+      };
+  };
 
   exports.World = World;
 })(this);
