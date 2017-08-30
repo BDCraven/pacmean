@@ -2,25 +2,44 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>Playing</title>
+		<title>pacMeanAnimation</title>
+		<script src="animationFrame.js"></script>
 
 		<script>
-			function myfunc(e) {
+		var RIGHT  = 0;
+		var LEFT = 1;
+		var UP = 2;
+		var DOWN = 3;
+
+			function arrowControl(e) {
 				e = e || window.event;
-				console.log(e);
-				nudge();
+
+				if (e.key == 'ArrowLeft') {
+					pacMean.setDirection(LEFT);
+				} else if (e.key == 'ArrowRight') {
+					pacMean.setDirection(RIGHT);
+				} else if (e.key == 'ArrowUp') {
+					pacMean.setDirection(UP);
+				} else if (e.key == 'ArrowDown') {
+					pacMean.setDirection(DOWN);
+				}
+				if (e.key == 'Meta') {
+					pacMean.setSpeed(7);
+				};
 			}
+
+
 		</script>
 	</head>
 
-	<body onload="renderSprite()">
-		<canvas id="pacMeanAnimation" onkeydown="myfunc()" style="border: solid 5px #8A2BE2;">
+	<body onload="renderSprite()" onkeydown="arrowControl()">
+		<canvas id="pacMeanAnimation" style="border: solid 5px #8A2BE2;">
 		Your browser does not support the HTML5 canvas tag.
 		</canvas>
 
 	<script>
 		var pacMeanImg = new Image();
-		pacMeanImg.src = "images/pacmean-animation.png";
+		pacMeanImg.src = "images/PacManSpritesDemo.gif";
 
 		function gameLoop () {
 		  window.requestAnimationFrame(gameLoop);
@@ -37,13 +56,22 @@
 				tickCount = 0,
 				ticksPerFrame = options.ticksPerFrame || 0,
 				numberOfFrames = options.numberOfFrames || 1;
+			var frameIndexes = [[6, 5, 0], [2, 1, 0], [4, 3, 0], [8, 7, 0]];
+			var RIGHT  = 0;
+			var LEFT = 1;
+			var UP = 2;
+			var DOWN = 3;
+			var dir = RIGHT;
+			var speed = 3;
 
 			that.context = options.context;
 			that.width = options.width;
 			that.height = options.height;
 			that.image = options.image;
-			that.x = 0;
 			that.loop = options.loop;
+			that.separation = options.separation;
+			that.dwidth = options.dwidth;
+			that.dheight = options.dheight;
 
 			that.update = function () {
         tickCount += 1;
@@ -59,25 +87,50 @@
 							frameIndex = 0;
 					}
 				}
+
+				// Update position based on direction
+				// dir
+					if (dir == RIGHT) {
+						x += speed;
+					} else if (dir == LEFT) {
+						x -= speed;
+					} else if (dir == UP) {
+						y -= speed;
+					} else if (dir == DOWN) {
+						y += speed;
+					}
     	};
 
 			that.render = function() {
-				//Draw the animation
+
+				// Clear the canvas
+				that.context.fillStyle = "black";
+				that.context.fillRect(0, 0, 600, 600);
+
+				// Draw the animation
 				that.context.drawImage(
 					that.image,
-					frameIndex * that.width / numberOfFrames,
-					0,
-					that.width / numberOfFrames,
+					2 + frameIndexes[dir][frameIndex] * that.separation,
+					2,
+					that.width,
 					that.height,
 					x,
 					y,
-					that.width / numberOfFrames,
-					that.height);
+					that.dwidth,
+					that.dheight);
 			};
 
 			that.nudge = function(h, v){
 				x += h;
 				y += v
+			};
+
+			that.setDirection = function(direction) {
+				dir = direction;
+			}
+
+			that.setSpeed = function(speeeeeed) {
+				speed = speeeeeed;
 			}
 			return that;
 		}
@@ -88,11 +141,14 @@
 
 		var pacMean = sprite({
 			context: canvas.getContext("2d"),
-			width: 389,
-			height: 130,
+			width: 28.5,
+			separation: 32,
+			height: 28.5,
 			image: pacMeanImg,
 			numberOfFrames: 3,
-			ticksPerFrame: 10,
+			ticksPerFrame: 2,
+			dwidth: 100,
+			dheight: 100,
 			loop: true
 		});
 
@@ -106,22 +162,6 @@
 			pacMeanImg.addEventListener("load", gameLoop);
 
 
-// frames 0, 1, 2, 3, 4, 5, 6, 7, 8, 9
-// rightFrames = [0, 5, 6]
-// leftFrame = [0, 1, 2]
-// dir = 0 for right, 1, for left, etc
-frameIndexes = [[0, 5, 6], [0, 1, 2], ...]
-frameIndexes[dir][frameIndex]
-frameIndexes[0] would be [0, 5, 6]
-
-currently frameIndex is looping 0, 1, 2, 0, 1, 2, 0, 1, 2,
-set dir to be 0, 1, 2, or 3 based on direction being right, left, etc
-var // XXX:  = 0;
-var LEFT = 1;
-var UP = 2;
-var DOWN = 3;
-
-then frame
 	</script>
 	</body>
 </html>
