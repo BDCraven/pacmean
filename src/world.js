@@ -6,11 +6,11 @@
     this._ELEMENT_HEIGHT = 40;
 
     this._grid = [
-      [1,1,1,1,1,1,1,1,1,1,1,1],
-      [1,0,1,0,0,0,0,0,0,0,0,1],
+      [1,1,1,1,1,1,1,1,1,1,0,0],
+      [1,0,0,0,0,1,0,0,0,0,0,1],
+      [1,0,0,0,0,1,0,0,0,0,0,1],
       [1,0,0,0,0,0,0,0,0,0,0,1],
-      [1,0,0,0,0,0,0,0,0,0,0,1],
-      [1,0,0,0,0,0,0,0,0,0,0,1],
+      [1,0,1,1,1,0,0,0,0,0,0,1],
       [1,0,0,0,1,0,0,1,0,0,0,1],
       [1,0,0,0,1,0,0,1,0,0,0,1],
       [1,0,0,0,0,0,0,0,0,0,0,1],
@@ -39,7 +39,7 @@
     for (var x = 0; x < this._MAX_ELEMENTS_X; x++ ) {
       for (var y = 0; y < this._MAX_ELEMENTS_Y; y++) {
         if(this._grid[x][y] === 1)
-          this._wall.display(x*this._ELEMENT_WIDTH,y*this._ELEMENT_HEIGHT);
+          this._wall.display(y*this._ELEMENT_WIDTH,x*this._ELEMENT_HEIGHT);
       }
     }
   };
