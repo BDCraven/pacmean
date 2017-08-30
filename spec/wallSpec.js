@@ -8,7 +8,7 @@ describe('Wall', function() {
   });
 
   describe ('constructor', function() {
-    it ('can be created with a height, width, and colour', function() {
+    it ('can be created with height, width, and colour', function() {
       expect(wall).toBeDefined();
     });
   });
