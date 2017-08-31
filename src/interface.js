@@ -5,8 +5,8 @@ window.onload=function() {
   var key;
   var world, pacMean;
 
-  var pacMeanX = 9 * 25;    //starts at grid position j = 9; change 25 to the constant defined in World
-  var pacMeanY = 16 * 25;   //starts at grid position i = 16; change 25 to the constant defined in World
+  var pacMeanX = 9 * GRID_ELEMENT_WIDTH;    //starts at grid position j = 9
+  var pacMeanY = 16 * GRID_ELEMENT_HEIGHT;  //starts at grid position i = 16
 
   context.fillStyle='black';
   context.fillRect(0,0,canvas.width,canvas.height);
@@ -28,10 +28,17 @@ window.onload=function() {
   }
 
   function updateGameArea() {
-    if (key && key == 37) {pacMean.goLeft();}
-    else if (key && key == 38) {pacMean.goUp();}
-    else if (key && key == 39) {pacMean.goRight();}
-    else if (key && key == 40) {pacMean.goDown();}
     clear();
+    if (key === undefined ) return;
+
+    pacMeanX = pacMean.getX();
+    pacMeanY = pacMean.getY();
+    if (world.isWall(pacMeanX, pacMeanY, key)) return;
+
+    if (key == 37) {pacMean.goLeft();}
+    else if (key == 38) {pacMean.goUp();}
+    else if (key == 39) {pacMean.goRight();}
+    else if (key == 40) {pacMean.goDown();}
+
   }
 };

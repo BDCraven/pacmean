@@ -13,40 +13,36 @@ describe("PacMean", function () {
   });
 
   it("is created with set dimensions", function () {
-    expect(pacMean.width).toEqual(25)
-    expect(pacMean.height).toEqual(25)
+    expect(pacMean.width).toEqual(28)
+    expect(pacMean.height).toEqual(28)
   });
 
   it("starts at set co-ordinates", function () {
-    expect(pacMean.x).toEqual(10);
-    expect(pacMean.y).toEqual(120);
+    expect(pacMean.getX()).toEqual(10);
+    expect(pacMean.getY()).toEqual(120);
   });
 
   it("has a default speed", function () {
     expect(pacMean.SPEED).toEqual(1);
   });
 
-  it("calls its draw function on instantiation", function () {
-    expect(pacMean.draw).toHaveBeenCalled();
-  });
-
   it("can have its x co-ordinate increased", function () {
     pacMean.goRight();
-    expect(pacMean.x).toEqual(11);
+    expect(pacMean.getX()).toEqual(11);
   });
 
   it("can have its x co-ordinate decreased", function () {
     pacMean.goLeft();
-    expect(pacMean.x).toEqual(9);
+    expect(pacMean.getX()).toEqual(9);
   });
 
   it("can have its y co-ordinate decreased", function () {
     pacMean.goUp();
-    expect(pacMean.y).toEqual(119);
+    expect(pacMean.getY()).toEqual(119);
   });
 
   it("can have its y co-ordinate increased", function () {
     pacMean.goDown();
-    expect(pacMean.y).toEqual(121);
+    expect(pacMean.getY()).toEqual(121);
   });
 });
