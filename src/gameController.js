@@ -3,6 +3,7 @@ function GameController() {
   this.pacMeanY = 16 * GRID_ELEMENT_HEIGHT;  //starts at grid position i = 16
   this.world = new World();
   this.pacMean = new PacMean(this.pacMeanX, this.pacMeanY);
+  this.score = new Score();
 }
 
 GameController.prototype.setKey = function (key) {
@@ -12,7 +13,10 @@ GameController.prototype.setKey = function (key) {
 GameController.prototype.updateGameArea = function () {
   this.clear();
   if (!this.key) return;
-  if (this.world.isPacDot(this.pacMean.xCoordinate(), this.pacMean.yCoordinate())) this.world.gridToZero(this.pacMean.xCoordinate(), this.pacMean.yCoordinate())
+  if (this.world.isPacDot(this.pacMean.xCoordinate(), this.pacMean.yCoordinate())) {
+    this.world.gridToZero(this.pacMean.xCoordinate(), this.pacMean.yCoordinate());
+    this.score.increase(100);
+  };
   if (this.world.isWall(this.pacMean.xCoordinate(), this.pacMean.yCoordinate(), this.key)) return;
 
   this.returnDirection();
@@ -28,6 +32,7 @@ GameController.prototype.clear = function () {
   context.fillRect(0,0,canvas.width,canvas.height);
   this.world.draw();
   this.pacMean.draw();
+  this.score.draw(GRID_ELEMENT_WIDTH,GRID_ELEMENT_HEIGHT);
 };
 
 GameController.prototype.returnDirection = function () {

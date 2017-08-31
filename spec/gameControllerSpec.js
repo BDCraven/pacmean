@@ -5,6 +5,8 @@ var context = {
   },
   clearRect: function () {
   },
+  fillText: function () {
+  },
 };
 
 var canvas = {
@@ -87,6 +89,12 @@ describe("GameController", function () {
       spyOn(gameController.pacMean, "draw");
       gameController.clear();
       expect(gameController.pacMean.draw).toHaveBeenCalled();
+    });
+
+    it("redraws the score", function () {
+      spyOn(gameController.score, "draw");
+      gameController.clear();
+      expect(gameController.score.draw).toHaveBeenCalled();
     });
   });
 
