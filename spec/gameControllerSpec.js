@@ -8,8 +8,8 @@ var context = {
 };
 
 var canvas = {
-  width: 480,
-  height: 480,
+  width: 570,
+  height: 660,
 };
 
 

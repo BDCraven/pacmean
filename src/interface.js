@@ -9,5 +9,5 @@ window.onload=function() {
   });
   window.setInterval(function () {
     gameController.updateGameArea();
-  }, 10);
+  }, 160);
 };

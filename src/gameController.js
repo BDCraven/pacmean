@@ -13,12 +13,7 @@ GameController.prototype.updateGameArea = function () {
   this.clear();
   if (!this.key) return;
   if (this.world.isWall(this.pacMean.xCoordinate(), this.pacMean.yCoordinate(), this.key)) return;
-
   this.returnDirection();
-  //this.pacMean.draw();
-  //this.pacMeanX = this.pacMean.xCoordinate();
-  //this.pacMeanY = this.pacMean.yCoordinate();
-  //this.clear(); //may need to put clear on line 1
 };
 
 GameController.prototype.clear = function () {
@@ -30,7 +25,6 @@ GameController.prototype.clear = function () {
 };
 
 GameController.prototype.returnDirection = function () {
-
   if (this.key === 37) {return this.pacMean.goLeft();}
   if (this.key === 38) {return this.pacMean.goUp();}
   if (this.key === 39) {return this.pacMean.goRight();}
