@@ -4,7 +4,6 @@ describe("PacMean", function () {
   var pacMean;
 
   beforeEach(function () {
-    spyOn(PacMean.prototype, "draw")
     pacMean = new PacMean(canvas.width/2, canvas.height/2);
   });
 
@@ -21,6 +20,13 @@ describe("PacMean", function () {
 
     it("has a default speed", function () {
       expect(pacMean.SPEED).toEqual(1);
+    });
+  });
+
+  describe("draw", function () {
+    it("creates a new sprite", function () {
+      pacMean.draw();
+      expect(pacMean.sprite).toEqual(jasmine.any(Sprite));
     });
   });
 

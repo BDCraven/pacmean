@@ -5,6 +5,8 @@ var context = {
   },
   clearRect: function () {
   },
+  drawImage: function () {
+  },
 };
 
 var canvas = {

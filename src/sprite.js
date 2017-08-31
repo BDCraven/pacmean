@@ -1,144 +1,57 @@
-		var RIGHT  = 0;
-		var LEFT = 1;
-		var UP = 2;
-		var DOWN = 3;
+'use strict';
 
-			// function arrowControl(e) {
-			// 	e = e || window.event;
-			//
-			// 	if (e.key == 'ArrowLeft') {
-			// 		pacMean.setDirection(LEFT);
-			// 	} else if (e.key == 'ArrowRight') {
-			// 		pacMean.setDirection(RIGHT);
-			// 	} else if (e.key == 'ArrowUp') {
-			// 		pacMean.setDirection(UP);
-			// 	} else if (e.key == 'ArrowDown') {
-			// 		pacMean.setDirection(DOWN);
-			// 	}
-			// 	if (e.key == 'Meta') {
-			// 		pacMean.setSpeed(7);
-			// 	};
-			// }
+function Sprite() {
+	this.pacMeanImg = new Image();
+	this.pacMeanImg.src = "src/images/PacManSpritesDemo.gif";
+	this.width = 28.5;
+	this.height = 28.5;
+  this.dwidth = 25;
+	this.dheight = 25;
+	this.tickCount = 0;
+	this.ticksPerFrame = 2;
+	this.numberOfFrames = 3;
+	this.currentFrame = 0;
+	this.separation = 32;
+	this.frameIndexes = [[6, 5, 0], [2, 1, 0], [4, 3, 0], [8, 7, 0]];
+}
 
-		var pacMeanImg = new Image();
-		pacMeanImg.src = "images/PacManSpritesDemo.gif";
+Sprite.prototype.setDirection = function (key) {
+	this.direction = key;
+};
 
-		function gameLoop () {
-		  window.requestAnimationFrame(gameLoop);
+Sprite.prototype.setCoordinates = function (x, y) {
+	this.x = x;
+	this.y = y;
+};
 
-		  pacMean.update();
-		  pacMean.render();
+Sprite.prototype.getDirection = function () {
+	if (this.direction === 37) {return 1}
+	if (this.direction === 38) {return 2}
+	if (this.direction === 39) {return 0}
+	if (this.direction === 40) {return 3}
+};
+
+Sprite.prototype.render = function() {
+	context.drawImage(
+		this.pacMeanImg,
+		2 + this.frameIndexes[this.getDirection()][this.currentFrame] * this.separation,
+		2,
+		this.width,
+		this.height,
+		this.x,
+		this.y,
+		this.dwidth,
+		this.dheight);
+};
+
+Sprite.prototype.update = function () {
+  this.tickCount += 1;
+  if (this.tickCount > this.ticksPerFrame) {
+  	this.tickCount = 0;
+		if (this.currentFrame < this.numberOfFrames - 1) {
+			this.currentFrame += 1;
+		} else {
+			this.currentFrame = 0;
 		}
-
-		function sprite (options) {
-
-			var that = {},
-				x = 0, y = 0,
-				frameIndex = 0,
-				tickCount = 0,
-				ticksPerFrame = options.ticksPerFrame || 0,
-				numberOfFrames = options.numberOfFrames || 1;
-			var frameIndexes = [[6, 5, 0], [2, 1, 0], [4, 3, 0], [8, 7, 0]];
-			var RIGHT  = 0;
-			var LEFT = 1;
-			var UP = 2;
-			var DOWN = 3;
-			var dir = RIGHT;
-			// var speed = 3;
-
-			that.context = options.context;
-			that.width = options.width;
-			that.height = options.height;
-			that.image = options.image;
-			that.loop = options.loop;
-			that.separation = options.separation;
-			that.dwidth = options.dwidth;
-			that.dheight = options.dheight;
-
-			that.update = function () {
-        tickCount += 1;
-
-        if (tickCount > ticksPerFrame) {
-        	tickCount = 0;
-
-          // Go to the next frame
-					if (frameIndex < numberOfFrames - 1) {
-							// Go to the next frame
-							frameIndex += 1;
-					} else if (that.loop) {
-							frameIndex = 0;
-					}
-				}
-
-				// // Update position based on direction
-				// // dir
-				// 	if (dir == RIGHT) {
-				// 		x += speed;
-				// 	} else if (dir == LEFT) {
-				// 		x -= speed;
-				// 	} else if (dir == UP) {
-				// 		y -= speed;
-				// 	} else if (dir == DOWN) {
-				// 		y += speed;
-				// 	}
-    	};
-
-			that.render = function() {
-
-				// Clear the canvas
-				that.context.fillStyle = "black";
-				that.context.fillRect(0, 0, 600, 600);
-
-				// Draw the animation
-				that.context.drawImage(
-					that.image,
-					2 + frameIndexes[dir][frameIndex] * that.separation,
-					2,
-					that.width,
-					that.height,
-					x,
-					y,
-					that.dwidth,
-					that.dheight);
-			};
-
-			that.nudge = function(h, v){
-				x += h;
-				y += v
-			};
-
-			that.setDirection = function(direction) {
-				dir = direction;
-			}
-
-			that.setSpeed = function(speeeeeed) {
-				speed = speeeeeed;
-			}
-			return that;
-		}
-
-		var canvas = document.getElementById("pacMeanAnimation")
-	  canvas.width = 600;
-	  canvas.height = 600;
-
-		var pacMean = sprite({
-			context: canvas.getContext("2d"),
-			width: 28.5,
-			separation: 32,
-			height: 28.5,
-			image: pacMeanImg,
-			numberOfFrames: 3,
-			ticksPerFrame: 2,
-			dwidth: 100,
-			dheight: 100,
-			loop: true
-		});
-
-
-	function renderSprite() {
-		pacMean.render();
 	}
-
-
-	// Start the game loop as soon as the sprite sheet is loaded
-			pacMeanImg.addEventListener("load", gameLoop);
+};
