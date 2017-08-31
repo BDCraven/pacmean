@@ -78,7 +78,7 @@
     } else if (key === 39){ //Right, so increment j
       j = Math.floor(pacMeanX * 1.0 / GRID_ELEMENT_WIDTH) + 1;
       i = Math.floor(pacMeanY / GRID_ELEMENT_HEIGHT);
-    } else if (key === 42){ //Down, so increment i
+    } else if (key === 40){ //Down, so increment i
       j = Math.floor(pacMeanX / GRID_ELEMENT_WIDTH);
       i = Math.floor(pacMeanY * 1.0 / GRID_ELEMENT_HEIGHT) + 1;
     }
