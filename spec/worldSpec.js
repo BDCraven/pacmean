@@ -27,8 +27,22 @@ describe ('World', function() {
     it('displays the pacDot when the grid has a pacDot element', function() {
       spyOn(pacDot, 'displayPacDot')
       world.draw();
-      expect(pacDot.displayPacDot.calls.count()).toEqual(191)
+      expect(pacDot.displayPacDot.calls.count()).toEqual(190)
     });
   });
+
+  describe('isPacDot', function() {
+    it('returns true if coordinate has a pacDot', function() {
+      expect(world.isPacDot(240,540)).toBe(true);
+    });
+  });
+
+  describe('gridToZero', function() {
+    it('resets a coordinte to 0 in the grid', function() {
+      expect(world._grid[16][7]).toEqual(2);
+      world.gridToZero(210,480);
+      expect(world._grid[16][7]).toEqual(0);
+    })
+  })
 
 });
