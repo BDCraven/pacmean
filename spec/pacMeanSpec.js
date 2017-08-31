@@ -87,4 +87,11 @@ describe("PacMean", function () {
       expect(pacMean.yCoordinate()).toEqual(1);
     });
   });
+
+  describe("setting and getting the key", function (){
+    it("receives and returns a key value", function () {
+      pacMean.setKey(37);
+      expect(pacMean.getKey()).toEqual(37);
+    });
+  });
 });

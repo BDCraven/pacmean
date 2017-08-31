@@ -6,13 +6,13 @@ function GameController() {
 }
 
 GameController.prototype.setKey = function (key) {
-  this.key = key;
+  this.pacMean.setKey(key);
 };
 
 GameController.prototype.updateGameArea = function () {
   this.clear();
-  if (!this.key) return;
-  if (this.world.isWall(this.pacMean.xCoordinate(), this.pacMean.yCoordinate(), this.key)) return;
+  if (!this.pacMean.getKey()) return;
+  if (this.world.isWall(this.pacMean.xCoordinate(), this.pacMean.yCoordinate(), this.pacMean.getKey())) return;
 
   this.returnDirection();
   //this.pacMean.draw();
@@ -31,8 +31,8 @@ GameController.prototype.clear = function () {
 
 GameController.prototype.returnDirection = function () {
 
-  if (this.key === 37) {return this.pacMean.goLeft();}
-  if (this.key === 38) {return this.pacMean.goUp();}
-  if (this.key === 39) {return this.pacMean.goRight();}
-  if (this.key === 40) {return this.pacMean.goDown();}
+  if (this.pacMean.getKey() === 37) {return this.pacMean.goLeft();}
+  if (this.pacMean.getKey() === 38) {return this.pacMean.goUp();}
+  if (this.pacMean.getKey() === 39) {return this.pacMean.goRight();}
+  if (this.pacMean.getKey() === 40) {return this.pacMean.goDown();}
  };

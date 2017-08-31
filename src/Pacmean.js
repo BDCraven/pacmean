@@ -51,18 +51,18 @@ PacMean.prototype.goDown = function () {
   }
 };
 
+PacMean.prototype.setKey = function (key){
+  this.key = key;
+};
+
+PacMean.prototype.getKey = function (){
+  return this.key;
+};
+
 PacMean.prototype._checkHorizontalLocation = function () {
   return this.x > 0 && this.x < canvas.width;
 };
 
 PacMean.prototype._checkVerticalLocation = function () {
   return this.y > 0 && this.y < canvas.height;
-};
-
-PacMean.prototype.getX = function () {
-  return this.x;
-};
-
-PacMean.prototype.getY = function () {
-  return this.y;
 };

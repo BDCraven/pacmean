@@ -1,11 +1,3 @@
-<!DOCTYPE HTML>
-<html>
-	<head>
-		<meta charset="utf-8">
-		<title>pacMeanAnimation</title>
-		<script src="animationFrame.js"></script>
-
-		<script>
 		var RIGHT  = 0;
 		var LEFT = 1;
 		var UP = 2;
@@ -28,16 +20,6 @@
 			// 	};
 			// }
 
-
-		</script>
-	</head>
-
-	<body onload="renderSprite()" onkeydown="arrowControl()">
-		<canvas id="pacMeanAnimation" style="border: solid 5px #8A2BE2;">
-		Your browser does not support the HTML5 canvas tag.
-		</canvas>
-
-	<script>
 		var pacMeanImg = new Image();
 		pacMeanImg.src = "images/PacManSpritesDemo.gif";
 
@@ -160,8 +142,3 @@
 
 	// Start the game loop as soon as the sprite sheet is loaded
 			pacMeanImg.addEventListener("load", gameLoop);
-
-
-	</script>
-	</body>
-</html>
