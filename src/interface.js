@@ -15,7 +15,8 @@ window.onload=function() {
   pacMean = new PacMean(pacMeanX, pacMeanY);
 
   window.addEventListener('keydown', function (e) {
-    key = e.keyCode;
+    if (e.keyCode >= 37 && e.keyCode <= 40)
+      key = e.keyCode;
   });
   setInterval(updateGameArea, 10);
 

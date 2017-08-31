@@ -31,8 +31,8 @@
       [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
     ];
 
-    this._MAX_ELEMENTS_X = this._grid.length;
-    this._MAX_ELEMENTS_Y = this._grid[0].length;
+    this._NUM_ROWS = this._grid.length;
+    this._NUM_COLS = this._grid[0].length;
 
     this._wall = new Wall(GRID_ELEMENT_WIDTH, GRID_ELEMENT_HEIGHT);
   };
@@ -47,8 +47,8 @@
   // Just remember x <-> j <-> width | y <-> i <-> height (read <-> as 'goes with')
 
   World.prototype.draw = function() {
-    for (var i = 0; i < this._MAX_ELEMENTS_X; i++ ) {
-      for (var j = 0; j < this._MAX_ELEMENTS_Y; j++) {
+    for (var i = 0; i < this._NUM_ROWS; i++ ) {
+      for (var j = 0; j < this._NUM_COLS; j++) {
         if(this._grid[i][j] === 1)
           this._wall.displayWall(j * GRID_ELEMENT_WIDTH , i * GRID_ELEMENT_HEIGHT);
       }
@@ -64,15 +64,15 @@
     // ceil before subtracting, floor before adding
     if (key === 37) { //Left, so decrement j
       j = Math.ceil(pacMeanX * 1.0 / GRID_ELEMENT_WIDTH) - 1;
-      i = pacMeanY / GRID_ELEMENT_HEIGHT;
+      i = Math.floor(pacMeanY / GRID_ELEMENT_HEIGHT);
     } else if (key === 38){ //Up, so decrement i
-      j = pacMeanX / GRID_ELEMENT_WIDTH;
+      j = Math.floor(pacMeanX / GRID_ELEMENT_WIDTH);
       i = Math.ceil(pacMeanY * 1.0 / GRID_ELEMENT_HEIGHT) - 1;
     } else if (key === 39){ //Right, so increment j
       j = Math.floor(pacMeanX * 1.0 / GRID_ELEMENT_WIDTH) + 1;
-      i = pacMeanY / GRID_ELEMENT_HEIGHT;
+      i = Math.floor(pacMeanY / GRID_ELEMENT_HEIGHT);
     } else if (key === 40){ //Down, so increment i
-      j = pacMeanX / GRID_ELEMENT_WIDTH;
+      j = Math.floor(pacMeanX / GRID_ELEMENT_WIDTH);
       i = Math.floor(pacMeanY * 1.0 / GRID_ELEMENT_HEIGHT) + 1;
     }
 
