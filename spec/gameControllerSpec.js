@@ -8,8 +8,8 @@ var context = {
 };
 
 var canvas = {
-  width: 480,
-  height: 480,
+  width: 570,
+  height: 660,
 };
 
 
@@ -55,6 +55,24 @@ describe("GameController", function () {
       gameController.setKey(37);
       gameController.updateGameArea();
       expect(PacMean.prototype.draw).toHaveBeenCalled();
+    });
+
+    it("checks that pacMean is not moved when a wall is detected", function() {
+      spyOn(PacMean.prototype, "goLeft");
+      spyOn(gameController.world, "isWall");
+      gameController.world.isWall.and.returnValue(true);
+      gameController.setKey(37);
+      gameController.updateGameArea();
+      expect(PacMean.prototype.goLeft).not.toHaveBeenCalled();
+    });
+
+    it("checks that pacMean is moved when a wall is not detected", function() {
+      spyOn(PacMean.prototype, "goLeft");
+      spyOn(gameController.world, "isWall");
+      gameController.world.isWall.and.returnValue(false);
+      gameController.setKey(37);
+      gameController.updateGameArea();
+      expect(PacMean.prototype.goLeft).toHaveBeenCalled();
     });
 
     it("calls its clear function to reset the board", function () {
