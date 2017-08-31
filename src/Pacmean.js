@@ -1,14 +1,14 @@
 function PacMean(x, y) {
-  this.width = this.height = 30;
+  this.width = GRID_ELEMENT_WIDTH - 2;
+  this.height = GRID_ELEMENT_HEIGHT - 2;
   this.SPEED = 1;
   this.x = x;
   this.y = y;
-  this.draw();
 }
 
 PacMean.prototype.draw = function () {
   context.fillStyle = "yellow";
-  context.fillRect(this.x-this.width/2, this.y-this.height/2, this.width, this.height);
+  context.fillRect(this.x + 1, this.y + 1, this.width, this.height);
 };
 
 PacMean.prototype.xCoordinate = function () {
@@ -57,4 +57,12 @@ PacMean.prototype._checkHorizontalLocation = function () {
 
 PacMean.prototype._checkVerticalLocation = function () {
   return this.y > 0 && this.y < canvas.height;
+};
+
+PacMean.prototype.getX = function () {
+  return this.x;
+};
+
+PacMean.prototype.getY = function () {
+  return this.y;
 };

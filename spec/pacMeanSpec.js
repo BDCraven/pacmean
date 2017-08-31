@@ -10,21 +10,17 @@ describe("PacMean", function () {
 
   describe("instantiation", function () {
     it("is created with set dimensions", function () {
-      expect(pacMean.width).toEqual(30)
-      expect(pacMean.height).toEqual(30)
+      expect(pacMean.width).toEqual(28)
+      expect(pacMean.height).toEqual(28)
     });
 
     it("starts at set co-ordinates", function () {
-      expect(pacMean.x).toEqual(240);
-      expect(pacMean.y).toEqual(240);
+      expect(pacMean.xCoordinate()).toEqual(240);
+      expect(pacMean.yCoordinate()).toEqual(240);
     });
 
     it("has a default speed", function () {
       expect(pacMean.SPEED).toEqual(1);
-    });
-
-    it("calls its draw function on instantiation", function () {
-      expect(pacMean.draw).toHaveBeenCalled();
     });
   });
 

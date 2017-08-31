@@ -22,8 +22,8 @@ describe("GameController", function () {
 
   describe("instantiation", function () {
     it("has default co-ordinates for PacMean", function () {
-      expect(gameController.pacMeanX).toEqual(240);
-      expect(gameController.pacMeanY).toEqual(240);
+      expect(gameController.pacMeanX).toEqual(270);
+      expect(gameController.pacMeanY).toEqual(480);
     });
 
     it("instantiates a world when it is created", function () {
@@ -45,26 +45,16 @@ describe("GameController", function () {
   describe("updateGameArea", function () {
     it("checks the direction PacMean is moving", function () {
       spyOn(gameController, "returnDirection");
+      gameController.setKey(37);
       gameController.updateGameArea();
       expect(gameController.returnDirection).toHaveBeenCalled();
     });
 
     it("draws PacMean", function () {
       spyOn(PacMean.prototype, "draw");
+      gameController.setKey(37);
       gameController.updateGameArea();
       expect(PacMean.prototype.draw).toHaveBeenCalled();
-    });
-
-    it("sets its pacMeanX value relative to the x co-ordinate of the PacMean object", function () {
-      spyOn(gameController.pacMean, "xCoordinate").and.returnValue(1);
-      gameController.updateGameArea();
-      expect(gameController.pacMeanX).toEqual(1);
-    });
-
-    it("sets its pacMeanX value relative to the x co-ordinate of the PacMean object", function () {
-      spyOn(gameController.pacMean, "yCoordinate").and.returnValue(1);
-      gameController.updateGameArea();
-      expect(gameController.pacMeanY).toEqual(1);
     });
 
     it("calls its clear function to reset the board", function () {
@@ -88,15 +78,15 @@ describe("GameController", function () {
     });
 
     it("redraws the world", function () {
-      spyOn(gameController.world, "display");
+      spyOn(gameController.world, "draw");
       gameController.clear();
-      expect(gameController.world.display).toHaveBeenCalled();
+      expect(gameController.world.draw).toHaveBeenCalled();
     });
 
     it("recreates PacMean", function () {
-      spyOn(window, "PacMean");
+      spyOn(gameController.pacMean, "draw");
       gameController.clear();
-      expect(window.PacMean).toHaveBeenCalled();
+      expect(gameController.pacMean.draw).toHaveBeenCalled();
     });
   });
 

@@ -1,11 +1,10 @@
 'use strict';
 
 describe ('World', function() {
-  var world, grid, wall;
+  var world, wall;
 
   beforeEach(function() {
     world = new World;
-    grid = world.getGrid();
     wall = world.getWall();
   });
 
@@ -18,8 +17,8 @@ describe ('World', function() {
   describe('display', function() {
     it('displays the wall when the grid has a wall element', function() {
       spyOn(wall, 'displayWall')
-      world.display();
-      expect(wall.displayWall.calls.count()).toEqual(44);
+      world.draw();
+      expect(wall.displayWall.calls.count()).toEqual(211)
     });
   });
 
