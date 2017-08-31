@@ -24,7 +24,7 @@ describe ('World', function() {
   });
 
   describe('displayPacDot', function() {
-    it('displays the wall when the grid has a wall element', function() {
+    it('displays the pacDot when the grid has a pacDot element', function() {
       spyOn(pacDot, 'displayPacDot')
       world.draw();
       expect(pacDot.displayPacDot.calls.count()).toEqual(191)
