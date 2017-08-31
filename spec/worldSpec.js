@@ -42,7 +42,41 @@ describe ('World', function() {
       expect(world._grid[16][7]).toEqual(2);
       world.gridToZero(210,480);
       expect(world._grid[16][7]).toEqual(0);
-    })
-  })
+    });
+  });
+
+  describe('isWall', function() {
+    it('detects a wall to the left when wall exists', function() {
+      expect(world.isWall(6 * 30, 9 * 30, 37)).toBe(true);
+    });
+
+    it('detects no wall to the left when no wall exists', function() {
+      expect(world.isWall(6 * 30, 10 * 30, 37)).toBe(false);
+    });
+
+    it('detects a wall to the right when wall exists', function() {
+      expect(world.isWall(6 * 30, 10 * 30, 39)).toBe(true);
+    });
+
+    it('detects no wall to the right when no wall exists', function() {
+      expect(world.isWall(5 * 30, 10 * 30, 39)).toBe(false);
+    });
+
+    it('detects a wall to the top when wall exists', function() {
+      expect(world.isWall(9 * 30, 16 * 30, 38)).toBe(true);
+    });
+
+    it('detects no wall to the top when no wall exists', function() {
+      expect(world.isWall(8 * 30, 16 * 30, 38)).toBe(false);
+    });
+
+    it('detects a wall to the bottom when wall exists', function() {
+      expect(world.isWall(7 * 30, 16 * 30, 40)).toBe(true);
+    });
+
+    it('detects no wall to the bottom when no wall exists', function() {
+      expect(world.isWall(6 * 30, 16 * 30, 40)).toBe(false);
+    });
+  });
 
 });

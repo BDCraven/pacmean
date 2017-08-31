@@ -1,0 +1,11 @@
+body {
+  display: flex;
+  background-image: url('../images/background.png');
+  align-items: center;
+}
+
+#score {
+  margin: 5em;
+  font-size: 30px;
+  color: white;
+}

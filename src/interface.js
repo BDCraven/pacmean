@@ -9,7 +9,10 @@ window.onload=function() {
     if (e.keyCode >= 37 && e.keyCode <= 40)
       gameController.setKey(e.keyCode);
   });
-  window.setInterval(function () {
+  window.requestAnimationFrame(loopGame);
+
+  function loopGame() {
     gameController.updateGameArea();
-  }, 10);
+    requestAnimationFrame(loopGame);
+  }
 };

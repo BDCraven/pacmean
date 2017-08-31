@@ -66,28 +66,27 @@
     var i, j;
 
     if (key === undefined) return false;
-
     // Calculating new grid position if pacMean moved
     // ceil before subtracting, floor before adding
     if (key === 37) { //Left, so decrement j
-      j = Math.ceil(pacMeanX * 1.0 / GRID_ELEMENT_WIDTH) - 1;
-      i = Math.floor(pacMeanY / GRID_ELEMENT_HEIGHT);
+      j = (pacMeanX / GRID_ELEMENT_WIDTH) - 1;
+      i = (pacMeanY / GRID_ELEMENT_HEIGHT);
     } else if (key === 38){ //Up, so decrement i
-      j = Math.floor(pacMeanX / GRID_ELEMENT_WIDTH);
-      i = Math.ceil(pacMeanY * 1.0 / GRID_ELEMENT_HEIGHT) - 1;
+      j = (pacMeanX / GRID_ELEMENT_WIDTH);
+      i = (pacMeanY / GRID_ELEMENT_HEIGHT) - 1;
     } else if (key === 39){ //Right, so increment j
-      j = Math.floor(pacMeanX * 1.0 / GRID_ELEMENT_WIDTH) + 1;
-      i = Math.floor(pacMeanY / GRID_ELEMENT_HEIGHT);
+      j = (pacMeanX / GRID_ELEMENT_WIDTH) + 1;
+      i = (pacMeanY / GRID_ELEMENT_HEIGHT);
     } else if (key === 40){ //Down, so increment i
-      j = Math.floor(pacMeanX / GRID_ELEMENT_WIDTH);
-      i = Math.floor(pacMeanY * 1.0 / GRID_ELEMENT_HEIGHT) + 1;
+      j = (pacMeanX / GRID_ELEMENT_WIDTH);
+      i = (pacMeanY / GRID_ELEMENT_HEIGHT) + 1;
     }
 
     if(this._grid[i][j] === 1) {
       return true;
     } else {
       return false;
-    };
+    }
   };
 
   World.prototype.isPacDot = function(pacMeanX, pacMeanY) {
