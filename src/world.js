@@ -23,7 +23,7 @@
       [1,1,1,1,2,1,2,1,1,1,1,1,2,1,2,1,1,1,1],
       [1,2,2,2,2,2,2,2,2,1,2,2,2,2,2,2,2,2,1],
       [1,2,1,1,2,1,1,1,2,1,2,1,1,1,2,1,1,2,1],
-      [1,2,2,1,2,2,2,2,2,2,2,2,2,2,2,1,2,2,1],
+      [1,2,2,1,2,2,2,2,2,0,2,2,2,2,2,1,2,2,1],
       [1,1,2,1,2,1,2,1,1,1,1,1,2,1,2,1,2,1,1],
       [1,2,2,2,2,1,2,2,2,1,2,2,2,1,2,2,2,2,1],
       [1,2,1,1,1,1,1,1,2,1,2,1,1,1,1,1,1,2,1],
@@ -88,6 +88,28 @@
     } else {
       return false;
     };
+  };
+
+  World.prototype.isPacDot = function(pacMeanX, pacMeanY) {
+    var i,j;
+
+    i = Math.floor(pacMeanY / GRID_ELEMENT_WIDTH);
+    j = Math.ceil(pacMeanX / GRID_ELEMENT_HEIGHT);
+
+    if(this._grid[i][j] === 2) {
+      return true;
+    } else {
+      return false;
+    };
+  };
+
+  World.prototype.gridToZero = function(pacMeanX, pacMeanY) {
+    var i,j;
+
+    i = Math.floor(pacMeanY / GRID_ELEMENT_WIDTH);
+    j = Math.ceil(pacMeanX / GRID_ELEMENT_HEIGHT);
+
+    this._grid[i][j] = 0
   };
 
   exports.World = World;
