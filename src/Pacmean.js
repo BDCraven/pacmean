@@ -58,11 +58,3 @@ PacMean.prototype._checkHorizontalLocation = function () {
 PacMean.prototype._checkVerticalLocation = function () {
   return this.y >= 0 && this.y <= canvas.height;
 };
-
-PacMean.prototype.getX = function () {
-  return this.x;
-};
-
-PacMean.prototype.getY = function () {
-  return this.y;
-};
