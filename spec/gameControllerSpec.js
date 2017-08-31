@@ -14,7 +14,6 @@ var canvas = {
   height: 480,
 };
 
-
 describe("GameController", function () {
   var gameController;
 
