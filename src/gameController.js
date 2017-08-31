@@ -12,6 +12,7 @@ GameController.prototype.setKey = function (key) {
 GameController.prototype.updateGameArea = function () {
   this.clear();
   if (!this.pacMean.getKey()) return;
+  if (this.world.isPacDot(this.pacMean.xCoordinate(), this.pacMean.yCoordinate())) this.world.gridToZero(this.pacMean.xCoordinate(), this.pacMean.yCoordinate());  
   if (this.world.isWall(this.pacMean.xCoordinate(), this.pacMean.yCoordinate(), this.pacMean.getKey())) return;
   this.returnDirection();
 };
