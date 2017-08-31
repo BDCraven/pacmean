@@ -1,14 +1,18 @@
 function PacMean(x, y) {
   this.width = GRID_ELEMENT_WIDTH - 2;
   this.height = GRID_ELEMENT_HEIGHT - 2;
+  this.sprite = new Sprite();
   this.SPEED = GRID_ELEMENT_WIDTH;
   this.x = x;
   this.y = y;
 }
 
 PacMean.prototype.draw = function () {
-  context.fillStyle = "yellow";
-  context.fillRect(this.x + 1, this.y + 1, this.width, this.height);
+  var direction = this.getKey() || 39;
+  this.sprite.setDirection(direction);
+  this.sprite.setCoordinates(this.x, this.y);
+  this.sprite.update();
+  this.sprite.render();
 };
 
 PacMean.prototype.xCoordinate = function () {
@@ -49,6 +53,15 @@ PacMean.prototype.goDown = function () {
   }else{
     this.y = 0;
   }
+};
+
+
+PacMean.prototype.setKey = function (key){
+  this.key = key;
+};
+
+PacMean.prototype.getKey = function (){
+  return this.key;
 };
 
 PacMean.prototype._checkHorizontalLocation = function () {

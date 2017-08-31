@@ -4,7 +4,6 @@ describe("PacMean", function () {
   var pacMean;
 
   beforeEach(function () {
-    spyOn(PacMean.prototype, "draw")
     pacMean = new PacMean(270, 480);
   });
 
@@ -21,6 +20,13 @@ describe("PacMean", function () {
 
     it("has a default speed", function () {
       expect(pacMean.SPEED).toEqual(30);
+    });
+  });
+
+  describe("draw", function () {
+    it("creates a new sprite", function () {
+      pacMean.draw();
+      expect(pacMean.sprite).toEqual(jasmine.any(Sprite));
     });
   });
 
@@ -85,6 +91,13 @@ describe("PacMean", function () {
       pacMean.y = 690;
       pacMean.goDown();
       expect(pacMean.yCoordinate()).toEqual(0);
+    });
+  });
+
+  describe("setting and getting the key", function (){
+    it("receives and returns a key value", function () {
+      pacMean.setKey(37);
+      expect(pacMean.getKey()).toEqual(37);
     });
   });
 });

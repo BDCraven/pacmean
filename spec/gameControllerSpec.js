@@ -5,8 +5,10 @@ var context = {
   },
   clearRect: function () {
   },
-  fillText: function () {
+  drawImage: function () {  
   },
+  fillText: function () {
+  },    
 };
 
 var canvas = {
@@ -38,8 +40,9 @@ describe("GameController", function () {
 
   describe("setKey", function () {
     it("sets the direction based on keycode", function () {
+      spyOn(gameController.pacMean, "setKey");
       gameController.setKey(37);
-      expect(gameController.key).toEqual(37);
+      expect(gameController.pacMean.setKey).toHaveBeenCalled();
     });
   });
 
