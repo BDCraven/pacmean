@@ -7,8 +7,6 @@ function Sprite() {
 	this.height = 28.5;
   this.dwidth = 25;
 	this.dheight = 25;
-	this.tickCount = 0;
-	this.ticksPerFrame = 2;
 	this.numberOfFrames = 3;
 	this.currentFrame = 0;
 	this.separation = 32;
@@ -45,13 +43,9 @@ Sprite.prototype.render = function() {
 };
 
 Sprite.prototype.update = function () {
-  this.tickCount += 1;
-  if (this.tickCount > this.ticksPerFrame) {
-  	this.tickCount = 0;
-		if (this.currentFrame < this.numberOfFrames - 1) {
-			this.currentFrame += 1;
-		} else {
-			this.currentFrame = 0;
-		}
+	if (this.currentFrame < this.numberOfFrames - 1) {
+		this.currentFrame += 1;
+	} else {
+		this.currentFrame = 0;
 	}
 };
