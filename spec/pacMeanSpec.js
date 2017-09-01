@@ -9,8 +9,8 @@ describe("PacMean", function () {
 
   describe("instantiation", function () {
     it("is created with set dimensions", function () {
-      expect(pacMean.width).toEqual(28)
-      expect(pacMean.height).toEqual(28)
+      expect(pacMean.getWidth()).toEqual(28)
+      expect(pacMean.getHeight()).toEqual(28)
     });
 
     it("starts at set co-ordinates", function () {
@@ -19,14 +19,14 @@ describe("PacMean", function () {
     });
 
     it("has a default speed", function () {
-      expect(pacMean.SPEED).toEqual(30);
+      expect(pacMean.getSpeed()).toEqual(30);
     });
   });
 
   describe("draw", function () {
     it("creates a new sprite", function () {
       pacMean.draw();
-      expect(pacMean.sprite).toEqual(jasmine.any(Sprite));
+      expect(pacMean.getSprite()).toEqual(jasmine.any(Sprite));
     });
   });
 
