@@ -28,10 +28,7 @@ GameController.prototype.clear = function () {
   context.fillStyle='black';
   context.fillRect(0,0,canvas.width,canvas.height);
   this.world.draw();
-  if (this.world.isGameOver()) {
-    this.endstate.draw(GRID_ELEMENT_WIDTH, GRID_ELEMENT_HEIGHT, "GAME OVER", "No more dots! Now what?!");
-    canvas.exit(); // not sure about this
-  };
+  if (this.endGameIfOver()) return;
   this.pacMean.draw();
   this.score.draw(GRID_ELEMENT_WIDTH,GRID_ELEMENT_HEIGHT);
 };
@@ -41,4 +38,12 @@ GameController.prototype.returnDirection = function () {
   if (this.pacMean.getKey() === 38) {return this.pacMean.goUp();}
   if (this.pacMean.getKey() === 39) {return this.pacMean.goRight();}
   if (this.pacMean.getKey() === 40) {return this.pacMean.goDown();}
+};
+
+GameController.prototype.endGameIfOver = function () {
+  if (this.world.haveAllPacDotsBeenEaten()) {
+    this.endstate.draw(GRID_ELEMENT_WIDTH, GRID_ELEMENT_HEIGHT, "GAME OVER", "No more dots! Now what?!");
+    return true;
+  };
+  return false;
 };

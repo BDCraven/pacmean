@@ -56,7 +56,7 @@
     return count;
   };
 
-  World.prototype.isGameOver = function() {
+  World.prototype.haveAllPacDotsBeenEaten = function() {
     if (this._getPacDotCount() === 0) {
       return true;
     } else {
@@ -87,17 +87,17 @@
     // Calculating new grid position if pacMean moved
     // ceil before subtracting, floor before adding
     if (key === 37) { //Left, so decrement j
-      j = (pacMeanX / GRID_ELEMENT_WIDTH) - 1;
-      i = (pacMeanY / GRID_ELEMENT_HEIGHT);
+      j = pacMeanX / GRID_ELEMENT_WIDTH - 1;
+      i = pacMeanY / GRID_ELEMENT_HEIGHT;
     } else if (key === 38){ //Up, so decrement i
-      j = (pacMeanX / GRID_ELEMENT_WIDTH);
-      i = (pacMeanY / GRID_ELEMENT_HEIGHT) - 1;
+      j = pacMeanX / GRID_ELEMENT_WIDTH;
+      i = pacMeanY / GRID_ELEMENT_HEIGHT - 1;
     } else if (key === 39){ //Right, so increment j
-      j = (pacMeanX / GRID_ELEMENT_WIDTH) + 1;
-      i = (pacMeanY / GRID_ELEMENT_HEIGHT);
+      j = pacMeanX / GRID_ELEMENT_WIDTH + 1;
+      i = pacMeanY / GRID_ELEMENT_HEIGHT;
     } else if (key === 40){ //Down, so increment i
-      j = (pacMeanX / GRID_ELEMENT_WIDTH);
-      i = (pacMeanY / GRID_ELEMENT_HEIGHT) + 1;
+      j = pacMeanX / GRID_ELEMENT_WIDTH;
+      i = pacMeanY / GRID_ELEMENT_HEIGHT + 1;
     }
 
     if(this._grid[i][j] === 1) {
@@ -122,11 +122,11 @@
 
   World.prototype.gridToZero = function(pacMeanX, pacMeanY) {
     var i,j;
-
+  
     i = Math.floor(pacMeanY / GRID_ELEMENT_WIDTH);
     j = Math.ceil(pacMeanX / GRID_ELEMENT_HEIGHT);
 
-    this._grid[i][j] = 0
+    if (this._grid[i][j] === 2) this._grid[i][j] = 0;
   };
 
   exports.World = World;

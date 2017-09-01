@@ -5,10 +5,10 @@ var context = {
   },
   clearRect: function () {
   },
-  drawImage: function () {  
+  drawImage: function () {
   },
   fillText: function () {
-  },    
+  },
 };
 
 var canvas = {
@@ -137,6 +137,20 @@ describe("GameController", function () {
     it("returns the goDown function if the key is set to 40", function () {
       gameController.setKey(40);
       expect(gameController.returnDirection()).toEqual(gameController.pacMean.goDown());
+    });
+  });
+
+  describe('endGameIfOver', function() {
+    it('returns true if all pac dots have been eaten', function() {
+      spyOn(gameController.world, "haveAllPacDotsBeenEaten")
+      gameController.world.haveAllPacDotsBeenEaten.and.returnValue(true);
+      expect(gameController.endGameIfOver()).toBe(true);
+    });
+
+    it('returns false otherwise', function() {
+      spyOn(gameController.world, "haveAllPacDotsBeenEaten")
+      gameController.world.haveAllPacDotsBeenEaten.and.returnValue(false);
+      expect(gameController.endGameIfOver()).toBe(false);
     });
   });
 });
