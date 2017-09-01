@@ -19,8 +19,8 @@ GameController.prototype.updateGameArea = function () {
     this.world.gridToZero(this.pacMean.xCoordinate(), this.pacMean.yCoordinate());
     this.score.increase(this.pacDotScore);
   }
-  if (this.world.isWall(this.pacMean.xCoordinate(), this.pacMean.yCoordinate(), this.pacMean.getKey())) return;
-  this.returnDirection();
+  this.pacMeanMovement();
+  this.ghostMovement();
 };
 
 GameController.prototype.clear = function () {
@@ -38,4 +38,16 @@ GameController.prototype.returnDirection = function () {
   if (this.pacMean.getKey() === 38) {return this.pacMean.goUp();}
   if (this.pacMean.getKey() === 39) {return this.pacMean.goRight();}
   if (this.pacMean.getKey() === 40) {return this.pacMean.goDown();}
+};
+
+GameController.prototype.pacMeanMovement = function () {
+  if (this.world.isWall(this.pacMean.xCoordinate(), this.pacMean.yCoordinate(), this.pacMean.getKey())) return;
+  this.returnDirection();
+};
+
+GameController.prototype.ghostMovement = function () {
+  this.pinky.look(this.pacMean.xCoordinate(), this.pacMean.yCoordinate());
+  this.pinky.chooseDirection();
+  if (this.world.isWall(this.pinky.x, this.pinky.y, this.pinky.direction)) return;
+  this.pinky.follow();
 };
