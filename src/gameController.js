@@ -48,6 +48,6 @@ GameController.prototype.pacMeanMovement = function () {
 GameController.prototype.ghostMovement = function () {
   this.pinky.look(this.pacMean.xCoordinate(), this.pacMean.yCoordinate());
   this.pinky.chooseDirection();
-  if (this.world.isWall(this.pinky.x, this.pinky.y, this.pinky.direction)) return;
+  if (this.world.isWall(this.pinky.xCoordinate(), this.pinky.yCoordinate(), this.pinky.getDirection())) return;
   this.pinky.follow();
 };
