@@ -5,6 +5,7 @@ function GameController() {
   this.world = new World();
   this.pacMean = new PacMean(this.pacMeanX, this.pacMeanY);
   this.score = new Score();
+  this.pinky = new Ghost();
   this.endstate = new Endstate();
 }
 
@@ -18,9 +19,10 @@ GameController.prototype.updateGameArea = function () {
   if (this.world.isPacDot(this.pacMean.xCoordinate(), this.pacMean.yCoordinate())) {
     this.world.gridToZero(this.pacMean.xCoordinate(), this.pacMean.yCoordinate());
     this.score.increase(this.pacDotScore);
-  };
-  if (this.world.isWall(this.pacMean.xCoordinate(), this.pacMean.yCoordinate(), this.pacMean.getKey())) return;
-  this.returnDirection();
+    wacka.play();
+  }
+  this.pacMeanMovement();
+  this.ghostMovement();
 };
 
 GameController.prototype.clear = function () {
@@ -30,6 +32,7 @@ GameController.prototype.clear = function () {
   this.world.draw();
   if (this.endGameIfOver()) return;
   this.pacMean.draw();
+  this.pinky.draw();
   this.score.draw(GRID_ELEMENT_WIDTH,GRID_ELEMENT_HEIGHT);
 };
 
@@ -40,10 +43,23 @@ GameController.prototype.returnDirection = function () {
   if (this.pacMean.getKey() === 40) {return this.pacMean.goDown();}
 };
 
+
 GameController.prototype.endGameIfOver = function () {
   if (this.world.haveAllPacDotsBeenEaten()) {
     this.endstate.draw(GRID_ELEMENT_WIDTH, GRID_ELEMENT_HEIGHT, "GAME OVER", "No more dots! Now what?!");
     return true;
   };
   return false;
+
+GameController.prototype.pacMeanMovement = function () {
+  if (this.world.isWall(this.pacMean.xCoordinate(), this.pacMean.yCoordinate(), this.pacMean.getKey())) return;
+  this.returnDirection();
+};
+
+GameController.prototype.ghostMovement = function () {
+  this.pinky.look(this.pacMean.xCoordinate(), this.pacMean.yCoordinate());
+  this.pinky.chooseDirection();
+  if (this.world.isWall(this.pinky.xCoordinate(), this.pinky.yCoordinate(), this.pinky.getDirection())) return;
+  this.pinky.follow();
+
 };

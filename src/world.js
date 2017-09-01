@@ -17,7 +17,7 @@
       [1,1,1,1,2,1,1,1,2,1,2,1,1,1,2,1,1,1,1],
       [0,0,0,1,2,1,2,2,2,2,2,2,2,1,2,1,0,0,0],
       [1,1,1,1,2,1,2,1,1,0,1,1,2,1,2,1,1,1,1],
-      [2,2,2,2,2,2,2,1,0,0,0,1,2,2,2,2,2,2,2],
+      [2,2,2,2,2,2,2,1,1,1,1,1,2,2,2,2,2,2,2],
       [1,1,1,1,2,1,2,1,1,1,1,1,2,1,2,1,1,1,1],
       [0,0,0,1,2,1,2,2,2,2,2,2,2,1,2,1,0,0,0],
       [1,1,1,1,2,1,2,1,1,1,1,1,2,1,2,1,1,1,1],
@@ -36,7 +36,7 @@
 
     this._wall = new Wall(GRID_ELEMENT_WIDTH, GRID_ELEMENT_HEIGHT);
     this._pacdot = new PacDot(GRID_ELEMENT_WIDTH, GRID_ELEMENT_HEIGHT);
-  };
+  }
 
   World.prototype.getWall = function() {
     return this._wall;
@@ -117,7 +117,7 @@
       return true;
     } else {
       return false;
-    };
+    }
   };
 
   World.prototype.gridToZero = function(pacMeanX, pacMeanY) {
