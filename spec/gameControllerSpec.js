@@ -5,10 +5,10 @@ var context = {
   },
   clearRect: function () {
   },
-  drawImage: function () {  
+  drawImage: function () {
   },
   fillText: function () {
-  },    
+  },
 };
 
 var canvas = {

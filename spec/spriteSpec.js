@@ -46,17 +46,6 @@ describe("Sprite", function () {
   });
 
   describe("update", function () {
-    it("increments the tick count", function () {
-      sprite.update();
-      expect(sprite.tickCount).toEqual(1);
-    });
-
-    it("resets the tick count if it exceeds the number of ticks per frame", function () {
-      sprite.tickCount = sprite.ticksPerFrame;
-      sprite.update();
-      expect(sprite.tickCount).toEqual(0);
-    });
-
     it("increments the current frame if it is less than the total number of frames", function () {
       sprite.tickCount = sprite.ticksPerFrame;
       sprite.update();

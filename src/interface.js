@@ -12,11 +12,4 @@ window.onload=function() {
   window.setInterval(function () {
     gameController.updateGameArea();
   }, 160);
-
-  // window.requestAnimationFrame(loopGame);
-  //
-  // function loopGame() {
-  //   gameController.updateGameArea();
-  //   requestAnimationFrame(loopGame);
-  // }
 };
