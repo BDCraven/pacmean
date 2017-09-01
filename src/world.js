@@ -36,7 +36,7 @@
 
     this._wall = new Wall(GRID_ELEMENT_WIDTH, GRID_ELEMENT_HEIGHT);
     this._pacdot = new PacDot(GRID_ELEMENT_WIDTH, GRID_ELEMENT_HEIGHT);
-  };
+  }
 
   World.prototype.getWall = function() {
     return this._wall;
@@ -99,7 +99,7 @@
       return true;
     } else {
       return false;
-    };
+    }
   };
 
   World.prototype.gridToZero = function(pacMeanX, pacMeanY) {
@@ -108,7 +108,7 @@
     i = Math.floor(pacMeanY / GRID_ELEMENT_WIDTH);
     j = Math.ceil(pacMeanX / GRID_ELEMENT_HEIGHT);
 
-    this._grid[i][j] = 0
+    this._grid[i][j] = 0;
   };
 
   exports.World = World;
