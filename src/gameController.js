@@ -47,8 +47,15 @@ GameController.prototype.endGameIfOver = function () {
   if (this.world.haveAllPacDotsBeenEaten()) {
     this.endstate.draw(GRID_ELEMENT_WIDTH, GRID_ELEMENT_HEIGHT, "GAME OVER", "No more dots! Now what?!");
     return true;
-  };
+  } else if (this.ghostEatsPacMean()) {
+    this.endstate.draw(GRID_ELEMENT_WIDTH, GRID_ELEMENT_HEIGHT, "GAME OVER", "Pinky got you! Booooooo!");
+    return true;
+  }
   return false;
+};
+
+GameController.prototype.ghostEatsPacMean = function () {
+  return this.pacMean.xCoordinate() === this.pinky.xCoordinate() && this.pacMean.yCoordinate() === this.pinky.yCoordinate();
 };
 
 GameController.prototype.pacMeanMovement = function () {

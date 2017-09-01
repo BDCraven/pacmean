@@ -14,6 +14,8 @@ window.onload=function() {
       gameController.setKey(e.keyCode);
   });
   window.setInterval(function () {
-    gameController.updateGameArea();
+    if (!gameController.endGameIfOver()) {
+      gameController.updateGameArea();
+    }
   }, 160);
 };
