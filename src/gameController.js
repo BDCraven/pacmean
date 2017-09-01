@@ -43,13 +43,13 @@ GameController.prototype.returnDirection = function () {
   if (this.pacMean.getKey() === 40) {return this.pacMean.goDown();}
 };
 
-
 GameController.prototype.endGameIfOver = function () {
   if (this.world.haveAllPacDotsBeenEaten()) {
     this.endstate.draw(GRID_ELEMENT_WIDTH, GRID_ELEMENT_HEIGHT, "GAME OVER", "No more dots! Now what?!");
     return true;
   };
   return false;
+};
 
 GameController.prototype.pacMeanMovement = function () {
   if (this.world.isWall(this.pacMean.xCoordinate(), this.pacMean.yCoordinate(), this.pacMean.getKey())) return;
