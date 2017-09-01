@@ -6,6 +6,7 @@ function GameController() {
   this.pacMean = new PacMean(this.pacMeanX, this.pacMeanY);
   this.score = new Score();
   this.pinky = new Ghost();
+  this.endstate = new Endstate();
 }
 
 GameController.prototype.setKey = function (key) {
@@ -29,6 +30,7 @@ GameController.prototype.clear = function () {
   context.fillStyle='black';
   context.fillRect(0,0,canvas.width,canvas.height);
   this.world.draw();
+  if (this.endGameIfOver()) return;
   this.pacMean.draw();
   this.pinky.draw();
   this.score.draw(GRID_ELEMENT_WIDTH,GRID_ELEMENT_HEIGHT);
@@ -41,6 +43,14 @@ GameController.prototype.returnDirection = function () {
   if (this.pacMean.getKey() === 40) {return this.pacMean.goDown();}
 };
 
+GameController.prototype.endGameIfOver = function () {
+  if (this.world.haveAllPacDotsBeenEaten()) {
+    this.endstate.draw(GRID_ELEMENT_WIDTH, GRID_ELEMENT_HEIGHT, "GAME OVER", "No more dots! Now what?!");
+    return true;
+  };
+  return false;
+};
+
 GameController.prototype.pacMeanMovement = function () {
   if (this.world.isWall(this.pacMean.xCoordinate(), this.pacMean.yCoordinate(), this.pacMean.getKey())) return;
   this.returnDirection();
@@ -51,4 +61,5 @@ GameController.prototype.ghostMovement = function () {
   this.pinky.chooseDirection();
   if (this.world.isWall(this.pinky.xCoordinate(), this.pinky.yCoordinate(), this.pinky.getDirection())) return;
   this.pinky.follow();
+
 };

@@ -79,4 +79,19 @@ describe ('World', function() {
     });
   });
 
+  describe ('haveAllPacDotsBeenEaten', function() {
+    it ('return false if all pac dots have not been eaten', function() {
+      expect(world.haveAllPacDotsBeenEaten()).toBe(false);
+    });
+
+    it ('return true if all pac dots have been eaten', function() {
+      for (var i = 0; i < 22; i++ ) {
+        for (var j = 0; j < 19; j++) {
+          world.gridToZero(j * GRID_ELEMENT_WIDTH, i * GRID_ELEMENT_HEIGHT);
+        };
+      };
+      expect(world.haveAllPacDotsBeenEaten()).toBe(true);
+    });
+  });
+
 });
