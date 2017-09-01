@@ -19,7 +19,7 @@ describe ('World', function() {
     it('displays the wall when the grid has a wall element', function() {
       spyOn(wall, 'displayWall')
       world.draw();
-      expect(wall.displayWall.calls.count()).toEqual(211)
+      expect(wall.displayWall.calls.count()).toEqual(214)
     });
   });
 
