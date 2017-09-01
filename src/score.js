@@ -11,8 +11,8 @@
 
   Score.prototype.draw = function(gridWidth, gridHeight) {
     context.font='15px courier'
-    context.fillText("score: " + this.value,gridWidth,gridHeight/2);
-    // document.getElementById('score').innerHTML = this.value; - passes locally but fails travis
+    context.fillStyle = '#FF0'
+    context.fillText("score: " + this.value, gridWidth, gridHeight/2);
   };
 
   exports.Score = Score;

@@ -35,5 +35,5 @@ GameController.prototype.returnDirection = function () {
   if (this.pacMean.getKey() === 37) {return this.pacMean.goLeft();}
   if (this.pacMean.getKey() === 38) {return this.pacMean.goUp();}
   if (this.pacMean.getKey() === 39) {return this.pacMean.goRight();}
-  if (this.pacMean.getKey() === 40) {return this.pacMean.goDown();} 
+  if (this.pacMean.getKey() === 40) {return this.pacMean.goDown();}
 };
