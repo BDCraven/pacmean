@@ -147,6 +147,14 @@ describe("GameController", function () {
       expect(gameController.endGameIfOver()).toBe(true);
     });
 
+    it('returns true if Pinky catches PacMean', function () {
+      spyOn(gameController.pinky, "xCoordinate").and.returnValue(100);
+      spyOn(gameController.pinky, "yCoordinate").and.returnValue(100);
+      spyOn(gameController.pacMean, "xCoordinate").and.returnValue(100);
+      spyOn(gameController.pacMean, "yCoordinate").and.returnValue(100);
+      expect(gameController.endGameIfOver()).toBe(true);
+    });
+
     it('returns false otherwise', function() {
       spyOn(gameController.world, "haveAllPacDotsBeenEaten")
       gameController.world.haveAllPacDotsBeenEaten.and.returnValue(false);
