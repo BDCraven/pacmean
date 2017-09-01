@@ -5,6 +5,7 @@ function GameController() {
   this.world = new World();
   this.pacMean = new PacMean(this.pacMeanX, this.pacMeanY);
   this.score = new Score();
+  this.pinky = new Ghost();
 }
 
 GameController.prototype.setKey = function (key) {
@@ -28,6 +29,7 @@ GameController.prototype.clear = function () {
   context.fillRect(0,0,canvas.width,canvas.height);
   this.world.draw();
   this.pacMean.draw();
+  this.pinky.draw();
   this.score.draw(GRID_ELEMENT_WIDTH,GRID_ELEMENT_HEIGHT);
 };
 
@@ -35,5 +37,5 @@ GameController.prototype.returnDirection = function () {
   if (this.pacMean.getKey() === 37) {return this.pacMean.goLeft();}
   if (this.pacMean.getKey() === 38) {return this.pacMean.goUp();}
   if (this.pacMean.getKey() === 39) {return this.pacMean.goRight();}
-  if (this.pacMean.getKey() === 40) {return this.pacMean.goDown();} 
+  if (this.pacMean.getKey() === 40) {return this.pacMean.goDown();}
 };
