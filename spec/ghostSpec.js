@@ -53,14 +53,14 @@ describe("Ghost", function () {
   describe("goUp", function () {
     it("can have its y co-ordinate decreased", function () {
       pinky.goUp();
-      expect(pinky.yCoordinate()).toEqual(210);
+      expect(pinky.yCoordinate()).toEqual(240);
     });
   });
 
   describe("goDown", function () {
     it("can have its y co-ordinate increased", function () {
       pinky.goDown();
-      expect(pinky.yCoordinate()).toEqual(270);
+      expect(pinky.yCoordinate()).toEqual(300);
     });
   });
 });
