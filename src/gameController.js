@@ -18,7 +18,7 @@ GameController.prototype.updateGameArea = function () {
   if (this.world.isPacDot(this.pacMean.xCoordinate(), this.pacMean.yCoordinate())) {
     this.world.gridToZero(this.pacMean.xCoordinate(), this.pacMean.yCoordinate());
     this.score.increase(this.pacDotScore);
-  };
+  }
   if (this.world.isWall(this.pacMean.xCoordinate(), this.pacMean.yCoordinate(), this.pacMean.getKey())) return;
   this.returnDirection();
 };
