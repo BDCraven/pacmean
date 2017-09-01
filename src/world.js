@@ -46,6 +46,24 @@
     return this._pacdot;
   };
 
+  World.prototype._getPacDotCount = function() {
+    var count = 0;
+    for (var i = 0; i < this._NUM_ROWS; i++ ) {
+      for (var j = 0; j < this._NUM_COLS; j++) {
+        if(this._grid[i][j] === 2) count ++;
+      };
+    };
+    return count;
+  };
+
+  World.prototype.isGameOver = function() {
+    if (this._getPacDotCount() === 0) {
+      return true;
+    } else {
+      return false;
+    };
+  };
+
   // i is the first array index, j is the second array index
   // As i changes we are going up / down in the array. Hence y coordinate is a function of i
   // As j changes we are going right / left in the array. Hence x coordinate is a function of j

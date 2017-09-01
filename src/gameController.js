@@ -5,6 +5,7 @@ function GameController() {
   this.world = new World();
   this.pacMean = new PacMean(this.pacMeanX, this.pacMeanY);
   this.score = new Score();
+  this.endstate = new Endstate();
 }
 
 GameController.prototype.setKey = function (key) {
@@ -27,6 +28,10 @@ GameController.prototype.clear = function () {
   context.fillStyle='black';
   context.fillRect(0,0,canvas.width,canvas.height);
   this.world.draw();
+  if (this.world.isGameOver()) {
+    this.endstate.draw(GRID_ELEMENT_WIDTH, GRID_ELEMENT_HEIGHT, "GAME OVER", "No more dots! Now what?!");
+    canvas.exit(); // not sure about this
+  };
   this.pacMean.draw();
   this.score.draw(GRID_ELEMENT_WIDTH,GRID_ELEMENT_HEIGHT);
 };
