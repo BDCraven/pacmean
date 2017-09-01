@@ -3,8 +3,10 @@
 
   function Ghost() {
     this.x = 9 * GRID_ELEMENT_WIDTH;
-    this.y = 8 * GRID_ELEMENT_HEIGHT;
+    this.y = 9 * GRID_ELEMENT_HEIGHT;
     this.speed = GRID_ELEMENT_WIDTH;
+    this.image = new Image();
+    this.image.src = "src/images/pinky.gif";
   }
 
   Ghost.prototype.xCoordinate = function () {
@@ -16,8 +18,9 @@
   };
 
   Ghost.prototype.draw = function () {
-    context.fillStyle='pink';
-    context.fillRect(this.x,this.y,GRID_ELEMENT_WIDTH,GRID_ELEMENT_HEIGHT);
+    context.drawImage(this.image,this.x,this.y,GRID_ELEMENT_WIDTH,GRID_ELEMENT_HEIGHT)
+    // context.fillStyle='pink';
+    // context.fillRect(this.x,this.y,GRID_ELEMENT_WIDTH,GRID_ELEMENT_HEIGHT);
   };
 
   Ghost.prototype.look = function (x, y) {
